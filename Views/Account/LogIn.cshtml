@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Log In";
+}
+
+@model IdentityExample.ViewModel.LogInVM;
+
+<div class="container">
+    <h1>Sign In</h1>
+    <form method="post" asp-action="LogIn">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.username">Username</label>
+            <input asp-for="@Model.username" class="form-control" />
+            <span asp-validation-for="@Model.username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.password">Password</label>
+            <input asp-for="@Model.password" class="form-control" />
+            <span asp-validation-for="@Model.password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-checkbox">
+                <label asp-for="@Model.remember_me">
+                    <input asp-for="@Model.remember_me" />
+                    Remember me
+                </label>
+            </div>
+        </div>
+
+        <a style="float:right;" asp-action="Register" asp-controller="Account">Don't have an account? Register.</a>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+    
+</div>

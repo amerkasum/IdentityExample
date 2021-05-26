@@ -1,0 +1,44 @@
+﻿@model IEnumerable<IdentityUser>
+@{
+    ViewBag.Title = "List  Users";
+}
+
+<div class="container">
+    <a class="btn btn-primary" asp-action="AddUser" asp-controller="Admin">Add User</a>
+    @if (Model.Any())
+    {
+        <h1>List of users</h1>
+        <table class=" table table-striped">
+            <thead>
+                <tr>
+                    <th>UserID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>@i.Id</td>
+                        <td>@i.UserName</td>
+                        <td>@i.Email</td>
+                        <td>@i.PhoneNumber</td>
+                        <td>
+                            <a asp-action="EditUser" asp-controller="Admin" asp-route-id="@i.Id">Edit</a> | 
+                            <a asp-action="DeleteUser" asp-controller="Admin" asp-route-id="@i.Id"
+                               onclick="return confirm('Are u sure u want to delete user : @i.UserName ?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>No Users Created</h1>
+    }
+
+</div>
